@@ -2,7 +2,7 @@
 
 A three page funnel for Josh Bell's Lean Body Academy.
 
-**VSL page** (`index.html`) > **Book a call** (`book.html`) > **Call confirmation** (`confirmed.html`)
+**Opt in to watch** (`index.html`) > **Watch the video and book a call** (`watch.html`) > **Call confirmation** (`confirmed.html`)
 
 Plain HTML, CSS and JavaScript. No build step, so it can be hosted anywhere that serves static files (Vercel, Netlify, GitHub Pages, Cloudflare Pages).
 
@@ -12,8 +12,8 @@ Everything you need to change lives in `assets/config.js`:
 
 | Setting | What it does |
 | --- | --- |
-| `vslEmbedUrl` | Josh's VSL embed link (Vimeo or YouTube embed URL). Loads when the play button is pressed. |
-| `calendlyUrl` | Josh's Calendly event link. Loads as an inline calendar on `book.html`. |
+| `vslEmbedUrl` | Josh's VSL embed link (Vimeo or YouTube embed URL). Plays on `watch.html` once they've opted in. |
+| `calendlyUrl` | Josh's Calendly event link. Loads as an inline calendar under the video on `watch.html`. |
 | `whatsappNumber` | Josh's WhatsApp number in international format, no `+` or spaces (e.g. `447123456789`). |
 | `whatsappMessage` | The pre-filled confirmation message. |
 | `leadWebhookUrl` | Optional. Zapier, Make, GoHighLevel etc. Receives `{ name, email, phone, source, submittedAt }` on opt-in. |
@@ -24,15 +24,15 @@ Everything you need to change lives in `assets/config.js`:
 - In the event settings, set the after-booking redirect to `https://YOUR-DOMAIN/confirmed.html`. The page also redirects itself when a booking is detected, so either way works.
 
 ## How it flows
-1. Lead watches the VSL and fills in name, email and phone.
-2. The lead is sent to the webhook (if set) and passed through to the booking page.
-3. They book a time in Calendly and land on the confirmation page.
-4. They tap the WhatsApp button to confirm their call with Josh.
+1. Lead lands on the opt in page. Clicking the locked video (or any button) opens a pop up asking for name, email and phone.
+2. The lead is sent to the webhook (if set) and they go straight to the watch page.
+3. They watch the video, then book a time in the Calendly embed underneath.
+4. They land on the confirmation page and tap the WhatsApp button to confirm their call with Josh.
 
 ## Files
 ```
-index.html        VSL page with opt-in form and transformation collage
-book.html         Thank you page with Calendly embed
+index.html        Opt in page: locked video, opt in pop up, transformation collage
+watch.html        Video plus Calendly embed
 confirmed.html    Call confirmation with WhatsApp confirm button
 assets/
   config.js       Funnel settings
