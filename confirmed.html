@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Your Call Is Booked | Lean Body Academy</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="assets/styles.css">
+<script src="assets/config.js"></script>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap" style="justify-content:center">
+    <img class="logo" src="assets/img/logo.png" alt="Lean Body Academy">
+  </div>
+</header>
+
+<main>
+  <section class="hero grid-bg" style="padding:90px 0 110px">
+    <div class="glow" style="top:55%;width:860px;height:520px" aria-hidden="true"></div>
+    <div class="wrap" style="position:relative;max-width:900px">
+      <div class="pulse" style="width:92px;height:92px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;margin:0 auto">
+        <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+      </div>
+      <h1 class="disp" style="font-size:clamp(50px,7.6vw,110px);margin-top:36px">Your Call Is <span class="red">Booked</span></h1>
+      <p class="lede" id="lede">Nice one. There's just one more step to lock in your spot with Josh.</p>
+
+      <div style="position:relative;margin-top:54px;background:var(--card);border:1px solid var(--line-2);border-radius:28px;padding:50px 46px;box-shadow:0 50px 100px -30px rgba(0,0,0,.95)" class="form-card">
+        <div class="card-top" style="left:48px;right:48px" aria-hidden="true"></div>
+        <span class="pill"><i></i>Final Step</span>
+        <h2 class="disp" style="font-size:clamp(30px,3.6vw,46px);line-height:1.02;margin-top:20px">Confirm Your Call On WhatsApp</h2>
+        <p class="muted" style="font-size:17px;line-height:1.65;margin:16px auto 0;max-width:520px">Tap below and send Josh the pre-filled message. Calls that aren't confirmed may be given to someone on the waiting list.</p>
+        <a class="btn" id="wa" href="#" target="_blank" rel="noopener" style="margin-top:32px">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.6-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>
+          Confirm On WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:100px 0 60px">
+    <div class="wrap">
+      <div style="text-align:center">
+        <span class="pill"><i></i>Before Your Call</span>
+        <h2 class="disp" style="font-size:clamp(40px,5vw,72px);line-height:.98;margin-top:22px">What Happens <span class="red">Next</span></h2>
+      </div>
+      <div class="perks" style="margin-top:52px">
+        <div class="perk"><div class="n disp" style="font-size:52px">01</div><h3>Confirm On WhatsApp</h3><p>Send Josh a quick message so he knows you're locked in.</p></div>
+        <div class="perk"><div class="n disp" style="font-size:52px">02</div><h3>Check Your Inbox</h3><p>Your calendar invite and call link are on their way to your email.</p></div>
+        <div class="perk"><div class="n disp" style="font-size:52px">03</div><h3>Show Up Ready</h3><p>Find somewhere quiet and come ready to talk about your goals.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:60px 0 130px">
+    <div class="wrap" style="max-width:1080px">
+      <h2 class="disp" style="font-size:clamp(32px,3.6vw,52px);line-height:1;text-align:center">While You Wait, Here's What's Possible</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:30px;margin-top:64px">
+        <div class="ph a"><img src="assets/img/t04.jpg" alt="Lean Body Academy client before and after transformation" loading="lazy"></div>
+        <div class="ph b"><img src="assets/img/t10.jpg" alt="Lean Body Academy client before and after transformation" loading="lazy"></div>
+        <div class="ph c"><img src="assets/img/t06.jpg" alt="Lean Body Academy client before and after transformation" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <img src="assets/img/logo.png" alt="Lean Body Academy">
+    <div><a href="#">Privacy</a> <span style="padding:0 8px">|</span> <a href="#">Terms And Conditions</a></div>
+    <div>© <span id="yr">2026</span> Lean Body Academy</div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var cfg = window.FUNNEL_CONFIG || {};
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  var p = new URLSearchParams(location.search), lead = {};
+  try { lead = JSON.parse(sessionStorage.getItem('lb_lead') || '{}'); } catch (x) {}
+  var name = p.get('invitee_full_name') || p.get('name') || lead.name || '';
+  var first = name ? name.split(' ')[0] : '';
+  if (first) document.getElementById('lede').textContent = 'Nice one, ' + first + ". There's just one more step to lock in your spot with Josh.";
+
+  var wa = document.getElementById('wa');
+  if (cfg.whatsappNumber) {
+    var msg = cfg.whatsappMessage || '';
+    if (first) msg = msg.replace(/^Hi Josh,/, 'Hi Josh, it\'s ' + first + '.');
+    wa.href = 'https://wa.me/' + cfg.whatsappNumber.replace(/\D/g, '') + '?text=' + encodeURIComponent(msg);
+  } else {
+    wa.removeAttribute('target');
+    wa.addEventListener('click', function (e) { e.preventDefault(); alert('Add Josh\'s WhatsApp number in assets/config.js'); });
+  }
+})();
+</script>
+</body>
+</html>
