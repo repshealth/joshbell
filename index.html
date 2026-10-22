@@ -212,6 +212,15 @@
     var fullPhone = '+44' + phone.replace(/\D/g, '').replace(/^0/, '');
     var lead = { name: name, email: email, phone: fullPhone, source: 'lean-body-vsl', submittedAt: new Date().toISOString() };
     try { sessionStorage.setItem('lb_lead', JSON.stringify(lead)); } catch (x) {}
+    if (cfg.dashboardFormsUrl && cfg.dashboardClient) {
+      // Sent as a normal form post so it goes through without a CORS check, even as the page moves on.
+      var fd = new URLSearchParams({
+        client: cfg.dashboardClient, source: 'magnet', form: 'VSL opt in', page: location.pathname,
+        utm_campaign: new URLSearchParams(location.search).get('utm_campaign') || '',
+        name: name, email: email, phone: fullPhone
+      });
+      try { fetch(cfg.dashboardFormsUrl, { method: 'POST', mode: 'no-cors', keepalive: true, body: fd }); } catch (x) {}
+    }
     if (cfg.leadWebhookUrl) {
       try { fetch(cfg.leadWebhookUrl, { method: 'POST', mode: 'no-cors', keepalive: true, headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify(lead) }); } catch (x) {}
     }
@@ -220,8 +229,12 @@
   });
 
   // Collage
-  var images = [];
-  for (var i = 1; i <= 13; i++) images.push('assets/img/t' + pad(i) + '.jpg');
+  // Written out in full so tools that rewrite relative image paths (e.g. the REPS dashboard preview) can find them.
+  var images = [
+    'assets/img/t01.jpg', 'assets/img/t02.jpg', 'assets/img/t03.jpg', 'assets/img/t04.jpg', 'assets/img/t05.jpg',
+    'assets/img/t06.jpg', 'assets/img/t07.jpg', 'assets/img/t08.jpg', 'assets/img/t09.jpg', 'assets/img/t10.jpg',
+    'assets/img/t11.jpg', 'assets/img/t12.jpg', 'assets/img/t13.jpg'
+  ];
   var big = [0, 3, 7, 9, 12];
   var collage = document.getElementById('collage');
   images.forEach(function (src, i) {

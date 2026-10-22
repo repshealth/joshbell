@@ -1,8 +1,8 @@
 // Lean Body Academy funnel settings.
 // Fill these in and every page picks them up. Leave a value empty to keep the placeholder showing.
 window.FUNNEL_CONFIG = {
-  // Embed URL for Josh's VSL, e.g. "https://player.vimeo.com/video/123456789" or "https://www.youtube.com/embed/abc123"
-  vslEmbedUrl: "",
+  // Josh's VSL on Wistia ("FINAL WEBSITE VIDEO"). Plays on watch.html once they've opted in.
+  vslEmbedUrl: "https://fast.wistia.net/embed/iframe/cxxetluifb",
 
   // Josh's Calendly event link, e.g. "https://calendly.com/joshbell/free-call"
   // In Calendly, set the after-booking redirect to: https://YOUR-DOMAIN/confirmed.html
@@ -12,6 +12,10 @@ window.FUNNEL_CONFIG = {
   whatsappNumber: "",
   whatsappMessage: "Hi Josh, I've just booked my free call and wanted to confirm I'll be there.",
 
-  // Optional: a webhook (Zapier, Make, GoHighLevel, etc.) that receives the opt-in as JSON { name, email, phone }
+  // Opt ins go to the REPS dashboard and land in Lean Body Academy's Leads.
+  dashboardFormsUrl: "https://dashboard.jolly-heart-2b8d.workers.dev/api/forms",
+  dashboardClient: "lean-body-academy",
+
+  // Optional: another webhook (Zapier, Make, GoHighLevel, etc.) that also receives the opt in as JSON { name, email, phone }
   leadWebhookUrl: ""
 };
