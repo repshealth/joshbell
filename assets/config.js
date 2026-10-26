@@ -6,7 +6,7 @@ window.FUNNEL_CONFIG = {
 
   // Josh's Calendly event link, e.g. "https://calendly.com/joshbell/free-call"
   // In Calendly, set the after-booking redirect to: https://YOUR-DOMAIN/confirmed.html
-  calendlyUrl: "",
+  calendlyUrl: "https://calendly.com/jbperformance/vision-call-clone",
 
   // Josh's WhatsApp number in international format with no + or spaces, e.g. "447123456789"
   whatsappNumber: "",
