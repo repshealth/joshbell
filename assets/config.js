@@ -4,10 +4,6 @@ window.FUNNEL_CONFIG = {
   // Josh's VSL on Wistia ("FINAL WEBSITE VIDEO"). Plays on watch.html once they've opted in.
   vslEmbedUrl: "https://fast.wistia.net/embed/iframe/cxxetluifb",
 
-  // Josh's Calendly event link, e.g. "https://calendly.com/joshbell/free-call"
-  // In Calendly, set the after-booking redirect to: https://YOUR-DOMAIN/confirmed.html
-  calendlyUrl: "https://calendly.com/jbperformance/vision-call-clone",
-
   // Josh's WhatsApp number in international format with no + or spaces, e.g. "447123456789"
   whatsappNumber: "",
   whatsappMessage: "Hi Josh, I've just booked my free call and wanted to confirm I'll be there.",
