@@ -128,6 +128,14 @@ img{max-width:100%}
 .tile:hover img,.tile:focus-visible img{filter:grayscale(0) contrast(1.05);transform:scale(1.1)}
 .tile:hover .ov,.tile:focus-visible .ov{opacity:1}
 
+/* More results */
+.tile.more{display:none}
+.collage.open .tile.more{display:block;animation:tileIn .45s ease both}
+@keyframes tileIn{from{opacity:0;transform:translateY(14px)}to{opacity:1}}
+.collage-more{cursor:pointer;font-family:inherit}
+.collage-more svg{transition:transform .25s ease}
+.collage-more[aria-expanded="true"] svg{transform:rotate(180deg)}
+
 /* Lightbox */
 .lb{position:fixed;inset:0;z-index:999;background:rgba(5,5,5,.94);display:none;align-items:center;justify-content:center;gap:24px;padding:24px}
 .lb.open{display:flex}
@@ -188,3 +196,5 @@ img{max-width:100%}
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
 }
+
+@media (max-width:420px){.pill{font-size:10.5px;letter-spacing:.08em;padding:8px 13px;gap:8px}}
