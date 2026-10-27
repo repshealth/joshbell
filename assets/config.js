@@ -12,6 +12,10 @@ window.FUNNEL_CONFIG = {
   dashboardFormsUrl: "https://dashboard.jolly-heart-2b8d.workers.dev/api/forms",
   dashboardClient: "lean-body-academy",
 
+  // Opt ins also go to the Google Sheet "Lean Body Academy - Funnel Opt Ins".
+  // Paste the Apps Script web app URL here (see integrations/google-sheet.gs).
+  sheetWebhookUrl: "",
+
   // Optional: another webhook (Zapier, Make, GoHighLevel, etc.) that also receives the opt in as JSON { name, email, phone }
   leadWebhookUrl: ""
 };

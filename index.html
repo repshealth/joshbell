@@ -232,7 +232,7 @@ src="https://www.facebook.com/tr?id=1639422524877883&ev=PageView&noscript=1"
     err.style.display = 'none';
 
     var fullPhone = '+44' + phone.replace(/\D/g, '').replace(/^0/, '');
-    var lead = { name: name, email: email, phone: fullPhone, source: 'lean-body-vsl', submittedAt: new Date().toISOString() };
+    var lead = { name: name, email: email, phone: fullPhone, source: 'lean-body-vsl', page: location.pathname, utm_campaign: new URLSearchParams(location.search).get('utm_campaign') || '', submittedAt: new Date().toISOString() };
     try { sessionStorage.setItem('lb_lead', JSON.stringify(lead)); } catch (x) {}
     if (cfg.dashboardFormsUrl && cfg.dashboardClient) {
       // Sent as a normal form post so it goes through without a CORS check, even as the page moves on.
@@ -242,6 +242,9 @@ src="https://www.facebook.com/tr?id=1639422524877883&ev=PageView&noscript=1"
         name: name, email: email, phone: fullPhone
       });
       try { fetch(cfg.dashboardFormsUrl, { method: 'POST', mode: 'no-cors', keepalive: true, body: fd }); } catch (x) {}
+    }
+    if (cfg.sheetWebhookUrl) {
+      try { fetch(cfg.sheetWebhookUrl, { method: 'POST', mode: 'no-cors', keepalive: true, headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify(lead) }); } catch (x) {}
     }
     if (cfg.leadWebhookUrl) {
       try { fetch(cfg.leadWebhookUrl, { method: 'POST', mode: 'no-cors', keepalive: true, headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify(lead) }); } catch (x) {}
