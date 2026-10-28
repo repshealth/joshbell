@@ -198,3 +198,12 @@ img{max-width:100%}
 }
 
 @media (max-width:420px){.pill{font-size:10.5px;letter-spacing:.08em;padding:8px 13px;gap:8px}}
+
+/* Phones and tablets: transformations in full colour, no hover effects (they stick after a tap on touch screens) */
+@media (hover: none), (max-width: 900px) {
+  .tile img, .tile:hover img, .tile:focus-visible img { filter: none; transform: none; }
+  .tile, .tile:hover, .tile:focus-visible { transform: none; box-shadow: 0 20px 40px -20px rgba(0,0,0,.9); }
+  .tile .ov, .tile:hover .ov { opacity: 0; }
+  .ph img, .ph:hover img { filter: none; }
+  .ph, .ph:hover { transform: none; box-shadow: 0 30px 60px -20px rgba(0,0,0,.9); }
+}
