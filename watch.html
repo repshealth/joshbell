@@ -154,7 +154,7 @@ src="https://www.facebook.com/tr?id=676943404381828&ev=PageView&noscript=1"
   // Video: they've opted in, so the player loads straight away
   var video = document.getElementById('video');
   if (cfg.vslEmbedUrl) {
-    var src = cfg.vslEmbedUrl + (cfg.vslEmbedUrl.indexOf('?') > -1 ? '&' : '?') + 'playerColor=FF4545&seo=false';
+    var src = cfg.vslEmbedUrl + (cfg.vslEmbedUrl.indexOf('?') > -1 ? '&' : '?') + 'playerColor=FF4545&seo=false&autoPlay=true&silentAutoPlay=allow';
     video.innerHTML = '<iframe src="' + src.replace(/"/g, '&quot;') + '" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Josh Bell: how to get in the best shape of your life"></iframe>';
   } else {
     document.getElementById('play').addEventListener('click', function () {
