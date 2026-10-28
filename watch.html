@@ -21,11 +21,17 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1639422524877883');
+fbq('init', '676943404381828');
 fbq('track', 'PageView');
+// Lead: only when they've arrived here from the opt in form, not from a shared or direct link
+(function () {
+  var p = new URLSearchParams(location.search), came = !!p.get('email');
+  try { came = came || !!JSON.parse(sessionStorage.getItem('lb_lead') || '{}').email; } catch (x) {}
+  if (came) fbq('track', 'Lead');
+})();
 </script>
 <noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1639422524877883&ev=PageView&noscript=1"
+src="https://www.facebook.com/tr?id=676943404381828&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
 </head>
@@ -159,7 +165,6 @@ src="https://www.facebook.com/tr?id=1639422524877883&ev=PageView&noscript=1"
   // Send them to the confirmation page as soon as a booking is made
   window.addEventListener('message', function (e) {
     if (e.origin.indexOf('calendly.com') === -1 || !e.data || e.data.event !== 'calendly.event_scheduled') return;
-    if (window.fbq) fbq('track', 'Schedule'); // Meta: call booked
     window.location.href = 'confirmed.html' + (name ? '?name=' + encodeURIComponent(name) : '');
   });
 })();
