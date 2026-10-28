@@ -16,7 +16,7 @@ Everything you need to change lives in `assets/config.js`:
 | `whatsappNumber` | Josh's WhatsApp number in international format, no `+` or spaces (e.g. `447123456789`). |
 | `whatsappMessage` | The pre-filled confirmation message. |
 | `dashboardFormsUrl`, `dashboardClient` | Sends each opt in to the REPS dashboard, where it lands in Lean Body Academy's Leads. |
-| `sheetWebhookUrl` | Saves each opt in as a row in the Google Sheet "Lean Body Academy - Funnel Opt Ins". Set up with `integrations/google-sheet.gs` (instructions at the top of that file). |
+| `sheetWebhookUrl` | Saves each opt in as a row in the Lean Body opt ins Google Sheet (connected). Set up with `integrations/google-sheet.gs` (instructions at the top of that file). |
 | `leadWebhookUrl` | Optional, as well as the dashboard. Zapier, Make, GoHighLevel etc. Receives `{ name, email, phone, source, submittedAt }` on opt-in. |
 
 ### Calendly

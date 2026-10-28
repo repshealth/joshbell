@@ -14,7 +14,7 @@ window.FUNNEL_CONFIG = {
 
   // Opt ins also go to the Lean Body opt ins Google Sheet.
   // Paste the Apps Script web app URL here (see integrations/google-sheet.gs).
-  sheetWebhookUrl: "",
+  sheetWebhookUrl: "https://script.google.com/macros/s/AKfycbzwniycpaRAvGP_bevuAilocbaAUuG0uUiKVF9sO-FL2yDGtdoV-NDMpMmC6OjhJNZeGw/exec",
 
   // Optional: another webhook (Zapier, Make, GoHighLevel, etc.) that also receives the opt in as JSON { name, email, phone }
   leadWebhookUrl: ""
