@@ -140,6 +140,8 @@ img{max-width:100%}
 .tile.t4{transform:rotate(1.8deg)}
 .tile img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(.85) contrast(1.05);transform:scale(1.02);transition:filter .45s ease,transform .6s cubic-bezier(.2,.8,.2,1)}
 .tile .ov{position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:space-between;padding:18px;background:linear-gradient(0deg,rgba(7,7,7,.85),rgba(7,7,7,0) 55%);opacity:0;transition:opacity .35s ease}
+.tile .name{position:absolute;left:14px;bottom:14px;z-index:3;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:var(--red);padding:7px 13px;border-radius:100px;pointer-events:none}
+.tile .ov{justify-content:flex-end}
 .tile .tag{font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#fff;background:var(--red);padding:7px 12px;border-radius:100px}
 .tile .zoom{width:40px;height:40px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center}
 .tile:hover,.tile:focus-visible{transform:rotate(0) scale(1.05);z-index:3;box-shadow:0 0 0 3px var(--red),0 30px 70px -18px rgba(255,69,69,.55);outline:none}

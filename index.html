@@ -206,27 +206,61 @@
   // Collage
   // Written out in full so tools that rewrite relative image paths (e.g. the REPS dashboard preview) can find them.
   // Most dramatic changes first; the first 12 show before "See all results".
+  // Names from Josh's comments on the dashboard.
   var images = [
-    'assets/img/t25.jpg', 'assets/img/t18.jpg', 'assets/img/t39.jpg', 'assets/img/t01.jpg', 'assets/img/t02.jpg',
-    'assets/img/t08.jpg', 'assets/img/t28.jpg', 'assets/img/t10.jpg', 'assets/img/t27.jpg', 'assets/img/t23.jpg',
-    'assets/img/t26.jpg', 'assets/img/t20.jpg', 'assets/img/t36.jpg', 'assets/img/t38.jpg', 'assets/img/t24.jpg',
-    'assets/img/t29.jpg', 'assets/img/t34.jpg', 'assets/img/t35.jpg', 'assets/img/t37.jpg', 'assets/img/t17.jpg',
-    'assets/img/t19.jpg', 'assets/img/t12.jpg', 'assets/img/t40.jpg', 'assets/img/t13.jpg', 'assets/img/t11.jpg',
-    'assets/img/t03.jpg', 'assets/img/t09.jpg', 'assets/img/t31.jpg', 'assets/img/t04.jpg', 'assets/img/t05.jpg',
-    'assets/img/t07.jpg', 'assets/img/t06.jpg', 'assets/img/t30.jpg', 'assets/img/t32.jpg', 'assets/img/t21.jpg',
-    'assets/img/t14.jpg', 'assets/img/t15.jpg', 'assets/img/t33.jpg', 'assets/img/t22.jpg', 'assets/img/t16.jpg'
+    { src: 'assets/img/t38.jpg', name: 'Dan' },
+    { src: 'assets/img/t32.jpg', name: 'Alex' },
+    { src: 'assets/img/t25.jpg', name: 'Gareth' },
+    { src: 'assets/img/t15.jpg', name: 'Matt' },
+    { src: 'assets/img/t39.jpg', name: 'Tony' },
+    { src: 'assets/img/t18.jpg', name: 'Kaka' },
+    { src: 'assets/img/t02.jpg', name: 'Reece' },
+    { src: 'assets/img/t01.jpg', name: 'Paul' },
+    { src: 'assets/img/t08.jpg', name: 'Nat' },
+    { src: 'assets/img/t10.jpg', name: 'Leigh' },
+    { src: 'assets/img/t27.jpg', name: 'Dan' },
+    { src: 'assets/img/t23.jpg', name: 'Louis' },
+    { src: 'assets/img/t28.jpg', name: 'James' },
+    { src: 'assets/img/t26.jpg', name: 'Rob' },
+    { src: 'assets/img/t20.jpg', name: 'Dan' },
+    { src: 'assets/img/t24.jpg', name: 'James' },
+    { src: 'assets/img/t29.jpg', name: 'Matty' },
+    { src: 'assets/img/t35.jpg', name: 'Matty' },
+    { src: 'assets/img/t34.jpg', name: 'Dan' },
+    { src: 'assets/img/t37.jpg', name: 'Paul' },
+    { src: 'assets/img/t17.jpg', name: 'Paul' },
+    { src: 'assets/img/t19.jpg', name: 'Dan' },
+    { src: 'assets/img/t40.jpg', name: 'James' },
+    { src: 'assets/img/t12.jpg', name: 'Rhys' },
+    { src: 'assets/img/t13.jpg', name: 'Chris' },
+    { src: 'assets/img/t11.jpg', name: 'Jay' },
+    { src: 'assets/img/t03.jpg', name: 'Alex' },
+    { src: 'assets/img/t31.jpg', name: 'Dan' },
+    { src: 'assets/img/t09.jpg', name: 'Jake' },
+    { src: 'assets/img/t04.jpg', name: 'Alex' },
+    { src: 'assets/img/t05.jpg', name: 'Reece' },
+    { src: 'assets/img/t07.jpg', name: 'Stuart' },
+    { src: 'assets/img/t06.jpg', name: 'Callum' },
+    { src: 'assets/img/t30.jpg', name: 'Ryan' },
+    { src: 'assets/img/t21.jpg', name: 'Rob' },
+    { src: 'assets/img/t14.jpg', name: 'Matt' },
+    { src: 'assets/img/t33.jpg', name: 'Tom' },
+    { src: 'assets/img/t22.jpg', name: 'Liam' },
+    { src: 'assets/img/t16.jpg', name: 'Joe' },
+    { src: 'assets/img/t36.jpg', name: 'Dan' }
   ];
   // Big tiles, placed so each block of rows fills in fully on the 4 column grid.
   var big = [0, 2, 4, 6, 12, 17, 22, 27];
   var SHOW = 12; // shown before "See more results"
   var collage = document.getElementById('collage');
-  images.forEach(function (src, i) {
+  images.forEach(function (t, i) {
     var b = document.createElement('button');
     b.type = 'button';
     b.className = 'tile t' + ((i % 4) + 1) + (big.indexOf(i) > -1 ? ' big' : '') + (i >= SHOW ? ' more' : '');
-    b.setAttribute('aria-label', 'Open transformation ' + (i + 1));
-    b.innerHTML = '<img src="' + src + '" alt="Lean Body Academy client before and after transformation ' + (i + 1) + '" loading="lazy">' +
-      '<span class="ov"><span class="tag">Client ' + pad(i + 1) + '</span><span class="zoom"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#070707" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span></span>';
+    b.setAttribute('aria-label', 'Open ' + t.name + '\'s transformation');
+    b.innerHTML = '<img src="' + t.src + '" alt="' + t.name + ', Lean Body Academy client, before and after" loading="lazy">' +
+      '<span class="name">' + t.name + '</span>' +
+      '<span class="ov"><span></span><span class="zoom"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#070707" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span></span>';
     b.addEventListener('click', function () { openLb(i); });
     collage.appendChild(b);
   });
@@ -250,8 +284,9 @@
   var cur = 0, lbFocus = null;
   function show(i) {
     cur = (i + images.length) % images.length;
-    lbImg.src = images[cur];
-    lbCount.textContent = pad(cur + 1) + ' / ' + pad(images.length);
+    lbImg.src = images[cur].src;
+    lbImg.alt = images[cur].name + ', Lean Body Academy client, before and after';
+    lbCount.textContent = images[cur].name + '  ' + pad(cur + 1) + ' / ' + pad(images.length);
   }
   function openLb(i) { lbFocus = document.activeElement; show(i); lb.classList.add('open'); document.body.style.overflow = 'hidden'; document.getElementById('lb-close').focus(); }
   function closeLb() { lb.classList.remove('open'); document.body.style.overflow = ''; if (lbFocus) lbFocus.focus(); }
