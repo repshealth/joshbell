@@ -227,3 +227,33 @@ img{max-width:100%}
   .ph img, .ph:hover img { filter: none; }
   .ph, .ph:hover { transform: none; box-shadow: 0 30px 60px -20px rgba(0,0,0,.9); }
 }
+
+/* Application quiz */
+.quiz-top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-right:48px}
+.quiz-count{font-size:13px;font-weight:700;color:var(--muted)}
+.quiz-bar{height:4px;border-radius:4px;background:#222;margin-top:20px;overflow:hidden}
+.quiz-bar i{display:block;height:100%;width:0;background:var(--red);transition:width .35s ease}
+.quiz{margin-top:30px}
+.q{display:none}
+.q.on{display:block;animation:qin .35s ease}
+@keyframes qin{from{opacity:0;transform:translateX(16px)}to{opacity:1;transform:none}}
+.q h3{font-size:clamp(28px,4vw,38px);line-height:1.02}
+.q-sub{font-size:15px;line-height:1.55;margin-top:10px}
+.q .field{margin-top:22px}
+.field textarea{width:100%;padding:18px 20px;border-radius:14px;border:1px solid #2E2E2E;background:#0C0C0C;font-family:inherit;font-size:16px;line-height:1.5;color:#fff;resize:vertical}
+.field textarea:focus{outline:none;border-color:var(--red);box-shadow:0 0 0 4px rgba(255,69,69,.18)}
+.field textarea::placeholder{color:#6B6B6B}
+.opts{display:flex;flex-direction:column;gap:10px;margin-top:22px}
+.opt{display:flex;align-items:center;gap:14px;width:100%;text-align:left;padding:16px 18px;border-radius:14px;border:1px solid #2E2E2E;background:#0C0C0C;color:#fff;font-family:inherit;font-size:16px;font-weight:600;cursor:pointer;transition:border-color .2s ease,background .2s ease}
+.opt b{flex:0 0 28px;height:28px;border-radius:8px;border:1px solid #3A3A3A;display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--muted)}
+.opt:hover,.opt:focus-visible{border-color:var(--red);outline:none}
+.opt.on{border-color:var(--red);background:rgba(255,69,69,.12)}
+.opt.on b{background:var(--red);border-color:var(--red);color:#fff}
+.q-err{display:none;font-size:14px;color:#FF7070;font-weight:600;margin-top:14px}
+.quiz-nav{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:26px}
+.quiz-back{padding:14px 20px}
+.quiz-nav .btn{width:auto;flex:1;max-width:320px;margin-left:auto}
+.q-safe{font-size:13px;color:var(--dim);text-align:center;margin-top:18px}
+.hero-vsl h1{font-size:clamp(34px,4.3vw,66px);line-height:1}
+.quiz-back{width:auto!important;cursor:pointer;font-family:inherit;font-size:15px}
+@media (max-width:600px){.hero-vsl h1{font-size:32px}}

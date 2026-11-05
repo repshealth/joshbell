@@ -29,8 +29,8 @@
   </header>
   <div class="wrap hero-copy hero-vsl">
     <div class="inner">
-      <h1 class="disp"><span class="red">Free Training:</span> How To Lose <span class="red">30lbs Of Belly Fat</span></h1>
-      <p class="lede sub-caps">Learn how to lose your stubborn belly fat, get lean and keep it off too, without gym sessions and meal prepping taking over all your precious free time.</p>
+      <h1 class="disp"><span class="red">Free Training:</span> Watch The Video Below To Learn How To Drop <span class="red"><span style="white-space:nowrap">15-20lbs+</span> Of Belly Fat</span> Before The End Of The Year</h1>
+      <p class="lede sub-caps">Learn how to lose 15-20lbs of stubborn belly fat before the new year, get lean and keep it off too, without gym sessions and meal prepping taking over all your precious free time.</p>
 
       <div class="video-wrap">
         <div class="video-frame" style="box-shadow:0 50px 100px -30px rgba(0,0,0,.95)">
@@ -42,7 +42,7 @@
 
       <div class="hero-cta">
         <button type="button" class="btn btn-wide" data-optin>
-          Watch Free Training
+          Apply For Coaching
           <svg class="arr" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </button>
         <p class="hero-note">Limited spots each week. First come, first served.</p>
@@ -72,10 +72,10 @@
   <section class="closing">
     <div class="wrap">
       <button type="button" class="btn btn-wide" data-optin>
-        Watch Free Training
+        Apply
         <svg class="arr" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </button>
-      <h2 class="disp">If you're done guessing, <span class="red">watch the free training.</span></h2>
+      <h2 class="disp">Watch the free training and apply for the <span class="red">Lean Body Programme.</span></h2>
     </div>
   </section>
 </main>
@@ -95,30 +95,52 @@
     <button type="button" class="modal-close" id="optin-close" aria-label="Close">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>
     </button>
-    <span class="pill"><i></i>Free Training</span>
-    <h3 id="optin-title" class="disp" style="font-size:38px;line-height:1;margin-top:18px">Where Should We <span class="red">Send It?</span></h3>
-    <p class="muted" style="font-size:15px;line-height:1.6;margin-top:12px">Enter your details below to watch the free training straight away.</p>
-    <form id="optin" style="display:flex;flex-direction:column;gap:18px;margin-top:26px" novalidate>
-      <div class="field">
-        <label for="name">Full Name</label>
-        <input id="name" name="name" type="text" placeholder="Your full name" autocomplete="name" required>
-      </div>
-      <div class="field">
-        <label for="email">Email</label>
-        <input id="email" name="email" type="email" placeholder="you@email.com" autocomplete="email" required>
-      </div>
-      <div class="field">
-        <label for="phone">Phone</label>
-        <div class="phone-row">
-          <span class="cc">+44</span>
-          <input id="phone" name="phone" type="tel" placeholder="7123 456789" autocomplete="tel-national" required>
+    <div class="quiz-top">
+      <span class="pill"><i></i>Apply For Coaching</span>
+      <span class="quiz-count" id="quiz-count">1 of 6</span>
+    </div>
+    <div class="quiz-bar" aria-hidden="true"><i id="quiz-bar"></i></div>
+    <form id="optin" class="quiz" novalidate>
+      <div class="q" data-q="goal">
+        <h3 class="disp">What's Your <span class="red">Main Goal?</span></h3>
+        <div class="opts" role="radiogroup" aria-label="Main goal">
+          <button type="button" class="opt" data-v="Lose belly fat"><b>A</b>Lose belly fat</button>
+          <button type="button" class="opt" data-v="Get lean and defined"><b>B</b>Get lean and defined</button>
+          <button type="button" class="opt" data-v="Lose fat and build muscle"><b>C</b>Lose fat and build muscle</button>
+          <button type="button" class="opt" data-v="Feel confident with my top off"><b>D</b>Feel confident with my top off</button>
         </div>
+        <input type="hidden" name="goal">
       </div>
-      <p id="form-error" role="alert" style="display:none;font-size:14px;color:#FF7070;font-weight:600"></p>
-      <button type="submit" class="btn" style="width:100%;margin-top:6px">Watch Free Training
-        <svg class="arr" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </button>
-      <p style="font-size:13px;color:var(--dim);text-align:center">Your details are safe with us. No spam, ever.</p>
+      <div class="q" data-q="why">
+        <h3 class="disp">Why Do You Want To Lose <span class="red">15-20lbs Before The New Year?</span></h3>
+        <div class="field"><textarea name="why" rows="4" placeholder="Be as honest as you like"></textarea></div>
+      </div>
+      <div class="q" data-q="occupation">
+        <h3 class="disp">What's Your <span class="red">Current Occupation?</span></h3>
+        <p class="muted q-sub">So Josh knows how to plan things around your day.</p>
+        <div class="field"><input name="occupation" type="text" placeholder="e.g. Electrician, shift work" autocomplete="organization-title"></div>
+      </div>
+      <div class="q" data-q="name">
+        <h3 class="disp">What's Your <span class="red">Name?</span></h3>
+        <div class="field"><input id="name" name="name" type="text" placeholder="Your full name" autocomplete="name"></div>
+      </div>
+      <div class="q" data-q="email">
+        <h3 class="disp">What's Your <span class="red">Email?</span></h3>
+        <div class="field"><input id="email" name="email" type="email" placeholder="you@email.com" autocomplete="email"></div>
+      </div>
+      <div class="q" data-q="phone">
+        <h3 class="disp">And Your <span class="red">Mobile Number?</span></h3>
+        <p class="muted q-sub">So Josh can reach you about your call.</p>
+        <div class="field"><div class="phone-row"><span class="cc">+44</span><input id="phone" name="phone" type="tel" placeholder="7123 456789" autocomplete="tel-national"></div></div>
+      </div>
+      <p id="form-error" role="alert" class="q-err"></p>
+      <div class="quiz-nav">
+        <button type="button" class="btn-ghost quiz-back" id="quiz-back">Back</button>
+        <button type="submit" class="btn" id="quiz-next">Next
+          <svg class="arr" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+      <p class="q-safe">Your details are safe with us. No spam, ever.</p>
     </form>
   </div>
 </div>
@@ -152,14 +174,14 @@
     var c = window.FUNNEL_CONFIG || {}, v = document.getElementById('video');
     if (!c.vslEmbedUrl || !v) return;
     var src = c.vslEmbedUrl + (c.vslEmbedUrl.indexOf('?') > -1 ? '&' : '?') + 'playerColor=FF4545&seo=false&autoPlay=true&silentAutoPlay=true&muted=true';
-    v.innerHTML = '<iframe src="' + src.replace(/"/g, '&quot;') + '" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Josh Bell: how to lose 30lbs of belly fat"></iframe>';
+    v.innerHTML = '<iframe src="' + src.replace(/"/g, '&quot;') + '" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Josh Bell: how to drop 15-20lbs of belly fat before the end of the year"></iframe>';
   })();
   var wrap = document.getElementById('optin-wrap'), lastFocus = null;
   function openOptin() {
     lastFocus = document.activeElement;
     wrap.classList.add('open');
     document.body.style.overflow = 'hidden';
-    setTimeout(function () { document.getElementById('name').focus(); }, 50);
+    go(0);
   }
   function closeOptin() {
     wrap.classList.remove('open');
@@ -170,26 +192,63 @@
   document.getElementById('optin-close').addEventListener('click', closeOptin);
   wrap.addEventListener('click', function (e) { if (e.target === wrap) closeOptin(); });
 
+  // Application quiz: one question at a time, contact details last
   var form = document.getElementById('optin'), err = document.getElementById('form-error');
+  var qs = form.querySelectorAll('.q'), step = 0;
+  var nextBtn = document.getElementById('quiz-next'), backBtn = document.getElementById('quiz-back');
+  var arrow = nextBtn.querySelector('svg').outerHTML;
+  function go(i) {
+    step = Math.max(0, Math.min(qs.length - 1, i));
+    Array.prototype.forEach.call(qs, function (q, j) { q.classList.toggle('on', j === step); });
+    document.getElementById('quiz-count').textContent = (step + 1) + ' of ' + qs.length;
+    document.getElementById('quiz-bar').style.width = ((step + 1) / qs.length * 100) + '%';
+    backBtn.style.visibility = step ? 'visible' : 'hidden';
+    var last = step === qs.length - 1;
+    nextBtn.innerHTML = (last ? 'Apply And Book My Call ' : 'Next ') + arrow;
+    nextBtn.style.display = qs[step].dataset.q === 'goal' ? 'none' : '';
+    err.style.display = 'none';
+    var f = qs[step].querySelector('input:not([type=hidden]), textarea, .opt.on, .opt');
+    setTimeout(function () { if (f) f.focus(); }, 60);
+  }
+  Array.prototype.forEach.call(form.querySelectorAll('.opt'), function (o) {
+    o.addEventListener('click', function () {
+      Array.prototype.forEach.call(form.querySelectorAll('.opt'), function (x) { x.classList.toggle('on', x === o); });
+      form.goal.value = o.dataset.v;
+      setTimeout(function () { go(step + 1); }, 220);
+    });
+  });
+  backBtn.addEventListener('click', function () { go(step - 1); });
+  form.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' && e.target.tagName === 'TEXTAREA' && !e.shiftKey) { e.preventDefault(); nextBtn.click(); }
+  });
+  function check(key) {
+    var v = (form[key] && form[key].value || '').trim();
+    if (key === 'goal' && !v) return 'Pick the goal that fits you best.';
+    if (key === 'why' && v.length < 2) return 'Tell Josh a little about why.';
+    if (key === 'occupation' && !v) return 'Please tell us what you do.';
+    if (key === 'name' && !v) return 'Please enter your name.';
+    if (key === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) return 'Please enter a valid email.';
+    if (key === 'phone' && v.replace(/\D/g, '').length < 9) return 'Please enter a valid mobile number.';
+    return '';
+  }
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-    var name = form.name.value.trim(), email = form.email.value.trim(), phone = form.phone.value.trim();
-    var msg = '';
-    if (!name) msg = 'Please enter your name.';
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) msg = 'Please enter a valid email.';
-    else if (phone.replace(/\D/g, '').length < 9) msg = 'Please enter a valid phone number.';
+    var msg = check(qs[step].dataset.q);
     if (msg) { err.textContent = msg; err.style.display = 'block'; return; }
-    err.style.display = 'none';
+    if (step < qs.length - 1) { go(step + 1); return; }
 
-    var fullPhone = '+44' + phone.replace(/\D/g, '').replace(/^0/, '');
-    var lead = { name: name, email: email, phone: fullPhone, source: 'lean-body-vsl', page: location.pathname, utm_campaign: new URLSearchParams(location.search).get('utm_campaign') || '', submittedAt: new Date().toISOString() };
+    var name = form.name.value.trim(), email = form.email.value.trim(), phone = form.phone.value.trim();
+    var goal = form.goal.value, why = form.why.value.trim(), occupation = form.occupation.value.trim();
+    var fullPhone = '+44' + phone.replace(/\D/g, '').replace(/^0/, '').replace(/^44/, '');
+    var utm = new URLSearchParams(location.search).get('utm_campaign') || '';
+    var lead = { name: name, email: email, phone: fullPhone, goal: goal, why: why, occupation: occupation, source: 'lean-body-vsl', page: location.pathname, utm_campaign: utm, submittedAt: new Date().toISOString() };
     try { sessionStorage.setItem('lb_lead', JSON.stringify(lead)); } catch (x) {}
     if (cfg.dashboardFormsUrl && cfg.dashboardClient) {
       // Sent as a normal form post so it goes through without a CORS check, even as the page moves on.
       var fd = new URLSearchParams({
-        client: cfg.dashboardClient, source: 'magnet', form: 'VSL opt in', page: location.pathname,
-        utm_campaign: new URLSearchParams(location.search).get('utm_campaign') || '',
-        name: name, email: email, phone: fullPhone
+        client: cfg.dashboardClient, source: 'magnet', form: 'Coaching application', page: location.pathname, utm_campaign: utm,
+        name: name, email: email, phone: fullPhone,
+        'answers[Main goal]': goal, 'answers[Why 15-20lbs before the new year]': why, 'answers[Occupation]': occupation
       });
       try { fetch(cfg.dashboardFormsUrl, { method: 'POST', mode: 'no-cors', keepalive: true, body: fd }); } catch (x) {}
     }
@@ -199,7 +258,7 @@
     if (cfg.leadWebhookUrl) {
       try { fetch(cfg.leadWebhookUrl, { method: 'POST', mode: 'no-cors', keepalive: true, headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify(lead) }); } catch (x) {}
     }
-    form.querySelector('button[type=submit]').disabled = true;
+    nextBtn.disabled = true;
     window.location.href = 'watch.html?' + new URLSearchParams({ name: name, email: email, phone: fullPhone }).toString();
   });
 

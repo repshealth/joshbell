@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Watch The Video | Lean Body Academy</title>
+<title>Book Your Call | Lean Body Academy</title>
 <meta name="robots" content="noindex">
 <link rel="icon" href="assets/img/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -43,9 +43,9 @@ src="https://www.facebook.com/tr?id=676943404381828&ev=PageView&noscript=1"
     <div class="wrap">
       <img class="logo" src="assets/img/logo.png" alt="Lean Body Academy">
       <div class="steps" aria-label="Step 2 of 3">
-        <div class="step done"><b><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#070707" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></b><span>Details</span></div>
+        <div class="step done"><b><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#070707" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></b><span>Apply</span></div>
         <div class="step-line on" aria-hidden="true"></div>
-        <div class="step now"><b>2</b><span>Watch And Book</span></div>
+        <div class="step now"><b>2</b><span>Book Your Call</span></div>
         <div class="step-line" aria-hidden="true"></div>
         <div class="step"><b>3</b><span>Confirm</span></div>
       </div>
@@ -53,38 +53,14 @@ src="https://www.facebook.com/tr?id=676943404381828&ev=PageView&noscript=1"
   </header>
 
   <main>
-    <!-- HEADING -->
-    <section style="position:relative;padding:70px 0 60px">
-      <div class="wrap">
-        <div style="max-width:820px;margin:0 auto;text-align:center">
-          <span class="pill"><i></i><span id="hello">You're In</span></span>
-          <h1 class="disp" style="font-size:clamp(40px,5.4vw,80px);line-height:.95;margin-top:22px">Step 1: <span class="red">Watch The Free Training</span></h1>
-          <p style="font-size:19px;line-height:1.6;color:#D4D4D4;margin:24px auto 0;max-width:560px">Watch it all the way through, then book your free Fat Loss Strategy Call with Josh underneath.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- VIDEO -->
-    <section style="position:relative;padding:20px 0 120px">
-      <div class="wrap" style="max-width:1060px">
-        <div class="video-frame" style="box-shadow:0 50px 100px -30px rgba(0,0,0,.95)">
-          <div class="video" id="video">
-            <button type="button" class="play pulse" id="play" aria-label="Play video">
-              <svg width="36" height="36" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-            </button>
-            <span class="ph-label" id="video-label">[ Josh's VSL video ]</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CALENDLY -->
-    <section id="book" style="position:relative;padding:110px 0 120px;border-top:1px solid var(--line)">
+    <!-- NEXT STEP: BOOK -->
+    <section id="book" style="position:relative;padding:70px 0 120px">
       <div class="glow" style="top:260px;width:900px;height:460px;opacity:.13" aria-hidden="true"></div>
       <div class="wrap" style="position:relative;max-width:1060px">
-        <div style="text-align:center">
-          <h2 class="disp" style="font-size:clamp(40px,5.4vw,80px);line-height:.95">Step 2: Want Further Help? Book Your <span class="red">Free Fat Loss Strategy Call</span></h2>
-          <p class="muted" style="font-size:18px;line-height:1.6;margin:20px auto 0;max-width:600px">Pick a time that suits you. Josh will get to know your goals and show you exactly how he'd get you into the best shape of your life.</p>
+        <div style="max-width:860px;margin:0 auto;text-align:center">
+          <span class="pill"><i></i><span id="hello">Application Received</span></span>
+          <h1 class="disp" style="font-size:clamp(40px,5.4vw,80px);line-height:.95;margin-top:22px">Next Step: Book Your <span class="red">Free Fat Loss Strategy Call</span></h1>
+          <p class="muted" style="font-size:18px;line-height:1.6;margin:20px auto 0;max-width:600px">Pick a time that suits you. Josh will go through your application, get to know your goals and show you exactly how he'd help you drop 15-20lbs of belly fat.</p>
         </div>
 
         <div class="cal-card" style="margin-top:52px">
@@ -132,18 +108,7 @@ src="https://www.facebook.com/tr?id=676943404381828&ev=PageView&noscript=1"
   var p = new URLSearchParams(location.search), lead = {};
   try { lead = JSON.parse(sessionStorage.getItem('lb_lead') || '{}'); } catch (x) {}
   var name = p.get('name') || lead.name || '', email = p.get('email') || lead.email || '', phone = p.get('phone') || lead.phone || '';
-  if (name) document.getElementById('hello').textContent = "You're In, " + name.split(' ')[0];
-
-  // Video: they've opted in, so the player loads straight away
-  var video = document.getElementById('video');
-  if (cfg.vslEmbedUrl) {
-    var src = cfg.vslEmbedUrl + (cfg.vslEmbedUrl.indexOf('?') > -1 ? '&' : '?') + 'playerColor=FF4545&seo=false&autoPlay=true&silentAutoPlay=allow';
-    video.innerHTML = '<iframe src="' + src.replace(/"/g, '&quot;') + '" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Josh Bell: how to get in the best shape of your life"></iframe>';
-  } else {
-    document.getElementById('play').addEventListener('click', function () {
-      document.getElementById('video-label').textContent = 'Add the VSL link in assets/config.js';
-    });
-  }
+  if (name) document.getElementById('hello').textContent = 'Application Received, ' + name.split(' ')[0];
 
   // Send them to the confirmation page as soon as a booking is made
   window.addEventListener('message', function (e) {
