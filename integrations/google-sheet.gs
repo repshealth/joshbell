@@ -22,7 +22,7 @@ var NOTIFY_EMAIL = 'joshbell@leanbodyacademy.co.uk';
 // Leave empty to use the sheet this script is attached to.
 var SHEET_ID = '';
 
-var HEADINGS = ['Submitted at', 'Name', 'Email', 'Phone', 'Page', 'UTM campaign', 'Main goal', 'Why 15-20lbs before the new year', 'Occupation'];
+var HEADINGS = ['Submitted at', 'Name', 'Email', 'Phone', 'Page', 'UTM campaign', 'Main goal', 'Why 15-20lbs before the new year', 'Occupation', 'How long working towards goal'];
 
 function doPost(e) {
   var lock = LockService.getScriptLock();
@@ -39,7 +39,7 @@ function doPost(e) {
     sheet.setFrozenRows(1);
     sheet.getRange(1, 1, 1, HEADINGS.length).setFontWeight('bold');
     var when = d.submittedAt ? new Date(d.submittedAt) : new Date();
-    sheet.appendRow([when, clean_(d.name), clean_(d.email), clean_(d.phone), clean_(d.page), clean_(d.utm_campaign), clean_(d.goal), clean_(d.why), clean_(d.occupation)]);
+    sheet.appendRow([when, clean_(d.name), clean_(d.email), clean_(d.phone), clean_(d.page), clean_(d.utm_campaign), clean_(d.goal), clean_(d.why), clean_(d.occupation), clean_(d.howlong)]);
     d.sheetUrl = ss.getUrl();
     d.when = when;
   } finally {
@@ -56,7 +56,7 @@ function doGet() {
 
 /** Run this once from the editor to check the email arrives. */
 function testEmail() {
-  notify_({ name: 'Test Person', email: 'test@example.com', phone: '+447000000000', goal: 'Lose belly fat', why: 'Holiday in the summer', occupation: 'Electrician', page: '/test', when: new Date(), sheetUrl: getSheet_().getParent().getUrl() });
+  notify_({ name: 'Test Person', email: 'test@example.com', phone: '+447000000000', goal: 'Lose belly fat', howlong: '6 to 12 months', occupation: 'Electrician', page: '/test', when: new Date(), sheetUrl: getSheet_().getParent().getUrl() });
 }
 
 function getSheet_() {
@@ -69,7 +69,7 @@ function notify_(d) {
   var name = str_(d.name) || 'Someone';
   var email = str_(d.email), phone = str_(d.phone);
   var when = Utilities.formatDate(d.when || new Date(), 'Europe/London', "EEE d MMM yyyy 'at' HH:mm");
-  var rows = [['Name', name], ['Email', email], ['Phone', phone], ['Main goal', str_(d.goal)], ['Why 15-20lbs before the new year', str_(d.why)], ['Occupation', str_(d.occupation)], ['Applied', when]];
+  var rows = [['Name', name], ['Email', email], ['Phone', phone], ['Main goal', str_(d.goal)], ['How long working towards it', str_(d.howlong)], ['Why 15-20lbs before the new year', str_(d.why)], ['Occupation', str_(d.occupation)], ['Applied', when]];
   rows = rows.filter(function (r) { return r[1]; });
   if (d.utm_campaign) rows.push(['Campaign', str_(d.utm_campaign)]);
 

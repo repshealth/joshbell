@@ -98,41 +98,42 @@
     </button>
     <div class="quiz-top">
       <span class="pill"><i></i>Apply For Coaching</span>
-      <span class="quiz-count" id="quiz-count">1 of 6</span>
+      <span class="quiz-count" id="quiz-count">1 of 4</span>
     </div>
     <div class="quiz-bar" aria-hidden="true"><i id="quiz-bar"></i></div>
     <form id="optin" class="quiz" novalidate>
       <div class="q" data-q="goal">
         <h3 class="disp">What's Your <span class="red">Main Goal?</span></h3>
-        <div class="opts" role="radiogroup" aria-label="Main goal">
+        <div class="opts" role="radiogroup" aria-label="Main goal" data-name="goal">
           <button type="button" class="opt" data-v="Lose belly fat"><b>A</b>Lose belly fat</button>
-          <button type="button" class="opt" data-v="Get lean and defined"><b>B</b>Get lean and defined</button>
+          <button type="button" class="opt" data-v="Lean and athletic"><b>B</b>Lean and athletic</button>
           <button type="button" class="opt" data-v="Lose fat and build muscle"><b>C</b>Lose fat and build muscle</button>
           <button type="button" class="opt" data-v="Feel confident with my top off"><b>D</b>Feel confident with my top off</button>
         </div>
         <input type="hidden" name="goal">
       </div>
-      <div class="q" data-q="why">
-        <h3 class="disp">Why Do You Want To Lose <span class="red">15-20lbs Before The New Year?</span></h3>
-        <div class="field"><textarea name="why" rows="4" placeholder="Be as honest as you like"></textarea></div>
+      <div class="q" data-q="contact">
+        <h3 class="disp">Where Can We <span class="red">Reach You?</span></h3>
+        <p class="muted q-sub">So Josh can look at your application and get in touch about your call.</p>
+        <div class="field"><label for="name">Name</label><input id="name" name="name" type="text" placeholder="Your full name" autocomplete="name"></div>
+        <div class="field" style="margin-top:14px"><label for="email">Email</label><input id="email" name="email" type="email" placeholder="you@email.com" autocomplete="email"></div>
+        <div class="field" style="margin-top:14px"><label for="phone">Mobile</label><div class="phone-row"><span class="cc">+44</span><input id="phone" name="phone" type="tel" placeholder="7123 456789" autocomplete="tel-national"></div></div>
+      </div>
+      <div class="q" data-q="howlong">
+        <h3 class="disp">How Long Have You Been <span class="red">Working Towards This Goal?</span></h3>
+        <div class="opts" role="radiogroup" aria-label="How long working towards this goal" data-name="howlong">
+          <button type="button" class="opt" data-v="Just getting started"><b>A</b>Just getting started</button>
+          <button type="button" class="opt" data-v="Less than 6 months"><b>B</b>Less than 6 months</button>
+          <button type="button" class="opt" data-v="6 to 12 months"><b>C</b>6 to 12 months</button>
+          <button type="button" class="opt" data-v="1 to 2 years"><b>D</b>1 to 2 years</button>
+          <button type="button" class="opt" data-v="Over 2 years"><b>E</b>Over 2 years</button>
+        </div>
+        <input type="hidden" name="howlong">
       </div>
       <div class="q" data-q="occupation">
         <h3 class="disp">What's Your <span class="red">Current Occupation?</span></h3>
         <p class="muted q-sub">(So we can see what your day looks like and plan your training and food around it.)</p>
         <div class="field"><input name="occupation" type="text" placeholder="e.g. Electrician, shift work" autocomplete="organization-title"></div>
-      </div>
-      <div class="q" data-q="name">
-        <h3 class="disp">What's Your <span class="red">Name?</span></h3>
-        <div class="field"><input id="name" name="name" type="text" placeholder="Your full name" autocomplete="name"></div>
-      </div>
-      <div class="q" data-q="email">
-        <h3 class="disp">What's Your <span class="red">Email?</span></h3>
-        <div class="field"><input id="email" name="email" type="email" placeholder="you@email.com" autocomplete="email"></div>
-      </div>
-      <div class="q" data-q="phone">
-        <h3 class="disp">And Your <span class="red">Mobile Number?</span></h3>
-        <p class="muted q-sub">So Josh can reach you about your call.</p>
-        <div class="field"><div class="phone-row"><span class="cc">+44</span><input id="phone" name="phone" type="tel" placeholder="7123 456789" autocomplete="tel-national"></div></div>
       </div>
       <p id="form-error" role="alert" class="q-err"></p>
       <div class="quiz-nav">
@@ -193,7 +194,7 @@
   document.getElementById('optin-close').addEventListener('click', closeOptin);
   wrap.addEventListener('click', function (e) { if (e.target === wrap) closeOptin(); });
 
-  // Application quiz: one question at a time, contact details last
+  // Application quiz: one question at a time. Contact details second (saved straight away), occupation last.
   var form = document.getElementById('optin'), err = document.getElementById('form-error');
   var qs = form.querySelectorAll('.q'), step = 0;
   var nextBtn = document.getElementById('quiz-next'), backBtn = document.getElementById('quiz-back');
@@ -206,26 +207,29 @@
     backBtn.style.visibility = step ? 'visible' : 'hidden';
     var last = step === qs.length - 1;
     nextBtn.innerHTML = (last ? 'Apply And Book My Call ' : 'Next ') + arrow;
-    nextBtn.style.display = qs[step].dataset.q === 'goal' ? 'none' : '';
+    nextBtn.style.display = qs[step].querySelector('.opts') ? 'none' : '';
     err.style.display = 'none';
     var f = qs[step].querySelector('input:not([type=hidden]), textarea, .opt.on, .opt');
     setTimeout(function () { if (f) f.focus(); }, 60);
   }
   Array.prototype.forEach.call(form.querySelectorAll('.opt'), function (o) {
     o.addEventListener('click', function () {
-      Array.prototype.forEach.call(form.querySelectorAll('.opt'), function (x) { x.classList.toggle('on', x === o); });
-      form.goal.value = o.dataset.v;
+      var group = o.parentNode;
+      Array.prototype.forEach.call(group.querySelectorAll('.opt'), function (x) { x.classList.toggle('on', x === o); });
+      form[group.dataset.name].value = o.dataset.v;
       setTimeout(function () { go(step + 1); }, 220);
     });
   });
   backBtn.addEventListener('click', function () { go(step - 1); });
+  form.addEventListener('input', function () { err.style.display = 'none'; });
   form.addEventListener('keydown', function (e) {
     if (e.key === 'Enter' && e.target.tagName === 'TEXTAREA' && !e.shiftKey) { e.preventDefault(); nextBtn.click(); }
   });
   function check(key) {
     var v = (form[key] && form[key].value || '').trim();
     if (key === 'goal' && !v) return 'Pick the goal that fits you best.';
-    if (key === 'why' && v.length < 2) return 'Tell Josh a little about why.';
+    if (key === 'howlong' && !v) return 'Pick the one closest to you.';
+    if (key === 'contact') return check('name') || check('email') || check('phone');
     if (key === 'occupation' && !v) return 'Please tell us what you do.';
     if (key === 'name' && !v) return 'Please enter your name.';
     if (key === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) return 'Please enter a valid email.';
@@ -236,23 +240,27 @@
     e.preventDefault();
     var msg = check(qs[step].dataset.q);
     if (msg) { err.textContent = msg; err.style.display = 'block'; return; }
-    if (step < qs.length - 1) { go(step + 1); return; }
-
     var name = form.name.value.trim(), email = form.email.value.trim(), phone = form.phone.value.trim();
-    var goal = form.goal.value, why = form.why.value.trim(), occupation = form.occupation.value.trim();
+    var goal = form.goal.value, howlong = form.howlong.value, occupation = form.occupation.value.trim();
     var fullPhone = '+44' + phone.replace(/\D/g, '').replace(/^0/, '').replace(/^44/, '');
     var utm = new URLSearchParams(location.search).get('utm_campaign') || '';
-    var lead = { name: name, email: email, phone: fullPhone, goal: goal, why: why, occupation: occupation, source: 'lean-body-vsl', page: location.pathname, utm_campaign: utm, submittedAt: new Date().toISOString() };
-    try { sessionStorage.setItem('lb_lead', JSON.stringify(lead)); } catch (x) {}
-    if (cfg.dashboardFormsUrl && cfg.dashboardClient) {
+    function toDashboard(formName, answers) {
+      if (!cfg.dashboardFormsUrl || !cfg.dashboardClient) return;
       // Sent as a normal form post so it goes through without a CORS check, even as the page moves on.
-      var fd = new URLSearchParams({
-        client: cfg.dashboardClient, source: 'magnet', form: 'Coaching application', page: location.pathname, utm_campaign: utm,
-        name: name, email: email, phone: fullPhone,
-        'answers[Main goal]': goal, 'answers[Why 15-20lbs before the new year]': why, 'answers[Occupation]': occupation
-      });
+      var fd = new URLSearchParams({ client: cfg.dashboardClient, source: 'magnet', form: formName, page: location.pathname, utm_campaign: utm, name: name, email: email, phone: fullPhone });
+      Object.keys(answers).forEach(function (k) { if (answers[k]) fd.append('answers[' + k + ']', answers[k]); });
       try { fetch(cfg.dashboardFormsUrl, { method: 'POST', mode: 'no-cors', keepalive: true, body: fd }); } catch (x) {}
     }
+    // Contact details in: save the lead now, so it isn't lost if they stop part way.
+    if (qs[step].dataset.q === 'contact') {
+      toDashboard('Coaching application (started)', { 'Main goal': goal });
+      go(step + 1); return;
+    }
+    if (step < qs.length - 1) { go(step + 1); return; }
+
+    var lead = { name: name, email: email, phone: fullPhone, goal: goal, howlong: howlong, occupation: occupation, source: 'lean-body-vsl', page: location.pathname, utm_campaign: utm, submittedAt: new Date().toISOString() };
+    try { sessionStorage.setItem('lb_lead', JSON.stringify(lead)); } catch (x) {}
+    toDashboard('Coaching application', { 'Main goal': goal, 'How long working towards this goal': howlong, 'Occupation': occupation });
     if (cfg.sheetWebhookUrl) {
       try { fetch(cfg.sheetWebhookUrl, { method: 'POST', mode: 'no-cors', keepalive: true, headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify(lead) }); } catch (x) {}
     }
