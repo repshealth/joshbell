@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Black Friday Shred In 7 | Lean Body Academy</title>
+<meta name="description" content="Black Friday Shred In 7 with Josh Bell. Pop your details in to get your spot.">
+<link rel="icon" href="assets/img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="assets/styles.css">
+<script src="assets/config.js"></script>
+<style>
+  .bf{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:48px 20px 64px;position:relative;overflow:hidden}
+  .bf .glow{top:42%;width:760px;height:420px;opacity:.14}
+  .bf-logo{height:64px;position:relative}
+  .bf-card{position:relative;width:100%;max-width:480px;margin-top:36px;background:var(--card);border:1px solid var(--line-2);border-radius:28px;padding:42px 36px;box-shadow:0 50px 120px -30px rgba(0,0,0,.95)}
+  .bf-card h1{font-size:clamp(44px,8vw,64px);line-height:.95;text-align:center}
+  .bf-card .sub{text-align:center;font-size:16px;line-height:1.6;color:#BDBDBD;margin-top:14px}
+  .bf-form{display:flex;flex-direction:column;gap:16px;margin-top:28px}
+  .ig-row{display:flex;gap:10px}
+  .ig-row .at{flex:0 0 auto;display:flex;align-items:center;padding:0 16px;border-radius:14px;border:1px solid #2E2E2E;background:#0C0C0C;font-size:16px;font-weight:700;color:#D4D4D4}
+  .bf-err{display:none;font-size:14px;color:#FF7070;font-weight:600}
+  .bf-done{display:none;text-align:center}
+  .bf-done .tick{width:72px;height:72px;margin:0 auto;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center}
+  .bf-done h2{font-size:44px;line-height:1;margin-top:24px}
+  .bf-done p{font-size:16px;line-height:1.6;color:#BDBDBD;margin-top:12px}
+  @media (max-width:600px){.bf-card{padding:34px 22px}}
+</style>
+</head>
+<body>
+<main class="bf">
+  <div class="glow" aria-hidden="true"></div>
+  <img class="bf-logo" src="assets/img/logo.png" alt="Lean Body Academy">
+
+  <div class="bf-card">
+    <div class="card-top" style="left:40px;right:40px" aria-hidden="true"></div>
+
+    <div id="bf-start">
+      <h1 class="disp">Black Friday <span class="red">Shred In 7</span></h1>
+      <p class="sub">Pop your details in below to get your spot.</p>
+      <form class="bf-form" id="bf-form" novalidate>
+        <div class="field">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" placeholder="Your full name" autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@email.com" autocomplete="email">
+        </div>
+        <div class="field">
+          <label for="instagram">Instagram</label>
+          <div class="ig-row"><span class="at">@</span><input id="instagram" name="instagram" type="text" placeholder="yourhandle" autocapitalize="off" autocorrect="off" spellcheck="false"></div>
+        </div>
+        <p class="bf-err" id="bf-err" role="alert"></p>
+        <button type="submit" class="btn" style="width:100%;margin-top:4px">Get My Spot
+          <svg class="arr" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </form>
+    </div>
+
+    <div class="bf-done" id="bf-done" role="status">
+      <div class="tick"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></div>
+      <h2 class="disp">You're <span class="red">In</span></h2>
+      <p id="bf-done-text">Thanks, Josh will be in touch with everything you need for Shred In 7.</p>
+    </div>
+  </div>
+</main>
+
+<script>
+(function () {
+  var cfg = window.FUNNEL_CONFIG || {};
+  var form = document.getElementById('bf-form'), err = document.getElementById('bf-err');
+  form.addEventListener('input', function () { err.style.display = 'none'; });
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name = form.name.value.trim(), email = form.email.value.trim();
+    var ig = form.instagram.value.trim().replace(/^@+/, '').replace(/^https?:\/\/(www\.)?instagram\.com\//i, '').replace(/[/?#].*$/, '');
+    var msg = !name ? 'Please enter your name.'
+      : !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ? 'Please enter a valid email.'
+      : !ig ? 'Please enter your Instagram.' : '';
+    if (msg) { err.textContent = msg; err.style.display = 'block'; return; }
+
+    if (cfg.dashboardFormsUrl && cfg.dashboardClient) {
+      // Goes into Lean Body Academy's Leads on the REPS dashboard.
+      var fd = new URLSearchParams({
+        client: cfg.dashboardClient, source: 'magnet', form: 'Black Friday Shred In 7', page: location.pathname,
+        utm_campaign: new URLSearchParams(location.search).get('utm_campaign') || '',
+        name: name, email: email, 'answers[Instagram]': '@' + ig
+      });
+      try { fetch(cfg.dashboardFormsUrl, { method: 'POST', mode: 'no-cors', keepalive: true, body: fd }); } catch (x) {}
+    }
+    document.getElementById('bf-done-text').textContent = 'Thanks ' + name.split(' ')[0] + ', Josh will be in touch with everything you need for Shred In 7.';
+    document.getElementById('bf-start').style.display = 'none';
+    document.getElementById('bf-done').style.display = 'block';
+  });
+})();
+</script>
+</body>
+</html>
